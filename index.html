@@ -211,17 +211,37 @@
             
             <div class="faq-item">
                 <h4>Why is my player falling through the floor on room load?</h4>
-                <p>Ensure the <strong>PlayerSpawnPoint</strong> is at least 0.75 units above the floor collider.</p>
+                <p>Ensure the <strong>PlayerSpawnPoint</strong> in your room prefab is at least 0.75 units above the floor collider. If the player spawns too close to or inside a collider, the physics engine may push them through the geometry.</p>
             </div>
 
             <div class="faq-item">
                 <h4>The Lobby environment is still visible while in a room.</h4>
-                <p>Verify your Lobby is childed to a single Root GameObject assigned to the <strong>Main Scene Root</strong>.</p>
+                <p>Verify that your entire Lobby geometry is a child of a single "Root" GameObject. This object must be assigned to the <strong>Main Scene Root</strong> field on the <code>LoopSceneRootController</code>.</p>
             </div>
 
             <div class="faq-item">
                 <h4>Can I trigger a "Death" or "Game Over" state?</h4>
-                <p>Yes. Call <code>LoadRespawnPoint()</code> from your health or damage script to return to the lobby.</p>
+                <p>Yes. Call <code>LoadRespawnPoint()</code> from your health or damage script. This instantly cleans up the current room and returns the player to the lobby.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>How do I handle lighting and NavMesh in spawned rooms?</h4>
+                <p>Since rooms are instantiated at runtime, we recommend using Realtime Lighting or Light Probes. For NavMesh, ensure your rooms are baked as prefabs or rebuild the NavMesh on the OnRoomLoaded event.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Does this support mobile or VR?</h4>
+                <p>Yes. The tool is performance-optimized and does not use heavy overhead. It simply manages GameObject instantiation and Transform positioning, making it safe for mobile and VR platforms using Unity 6.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I have more than two run paths?</h4>
+                <p>By default, the system supports a <strong>Primary</strong> and an <strong>Independent</strong> pool. For more complex branching, you can programmatically modify the <code>PrimaryRunPool</code> list inside the <code>GenericRunManager</code> using the <code>OnRoomLoaded</code> event before the next trigger is hit.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Is the system compatible with URP or HDRP?</h4>
+                <p>Absolutely. The tool manages GameObjects and logic, meaning it is completely independent of the Render Pipeline you choose. It works perfectly with URP, HDRP, and Built-in.</p>
             </div>
         </div>
     </div>
