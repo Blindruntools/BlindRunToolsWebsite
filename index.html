@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>BlindRunTools | Unity Roguelite Framework</title>
+    <style>
+        :root {
+            --bg: #0b0e14;
+            --card-bg: #161b22;
+            --accent: #00f2ff;
+            --text: #e6edf3;
+            --secondary-text: #8b949e;
+            --hex-color: rgba(0, 242, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                linear-gradient(30deg, var(--bg) 12%, transparent 12.5%, transparent 87%, var(--bg) 87.5%, var(--bg)),
+                linear-gradient(150deg, var(--bg) 12%, transparent 12.5%, transparent 87%, var(--bg) 87.5%, var(--bg)),
+                linear-gradient(30deg, var(--bg) 12%, transparent 12.5%, transparent 87%, var(--bg) 87.5%, var(--bg)),
+                linear-gradient(150deg, var(--bg) 12%, transparent 12.5%, transparent 87%, var(--bg) 87.5%, var(--bg)),
+                linear-gradient(60deg, var(--hex-color) 25%, transparent 25.5%, transparent 75%, var(--hex-color) 75%, var(--hex-color)),
+                linear-gradient(60deg, var(--hex-color) 25%, transparent 25.5%, transparent 75%, var(--hex-color) 75%, var(--hex-color));
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            width: 100%;
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(11, 14, 20, 0.9), var(--bg));
+            border-bottom: 1px solid #30363d;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--secondary-text);
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            overflow: hidden;
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 60px 0;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent);
+            font-size: 1.4rem;
+        }
+
+        .faq-section {
+            background: rgba(22, 27, 34, 0.8);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 80px;
+            border: 1px solid #30363d;
+        }
+
+        .faq-item {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 20px;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item h4 {
+            color: var(--accent);
+            margin: 0 0 12px 0;
+            font-size: 1.2rem;
+        }
+
+        .support-footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(to top, rgba(0, 242, 255, 0.05), transparent);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--secondary-text);
+            font-size: 0.9rem;
+            border-top: 1px solid #30363d;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #30363d;
+            margin: 60px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="hero-title">BlindRunTools</h1>
+        <p class="tagline">Modular Frameworks for the Masses. Built for Unity 6.</p>
+        <a href="#" class="btn" style="margin-top: 30px;">View on Asset Store</a>
+    </header>
+
+    <div class="container">
+        <div style="text-align: center;">
+            <h2>See the System in Action</h2>
+            <p style="color: var(--secondary-text);">Automated roguelite room orchestration tutorial.</p>
+        </div>
+        
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/czkSdvC5_kc" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen 
+                referrerpolicy="strict-origin-when-cross-origin"
+                title="BlindRunTools Tutorial">
+            </iframe>
+        </div>
+
+        <hr>
+
+        <div class="grid">
+            <div class="card">
+                <h3>🔄 Auto-Transitions</h3>
+                <p>Hides the lobby, spawns rooms at isolated coordinates, and teleports the player instantly based on your prefab pool.</p>
+            </div>
+            <div class="card">
+                <h3>🎮 Controller Agnostic</h3>
+                <p>Seamlessly handles Rigidbody, CharacterController, and custom physics backends during room transitions.</p>
+            </div>
+            <div class="card">
+                <h3>⚡ Dual Run Paths</h3>
+                <p>Support for Primary and Independent sequences side-by-side without conflicts.</p>
+            </div>
+            <div class="card">
+                <h3>🛠️ Event-Driven</h3>
+                <p>Trigger your UI, audio, and save logic via Inspector-facing UnityEvents.</p>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <h2 style="margin-top: 0; color: #fff; font-size: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 30px;">❓ Detailed FAQ & Troubleshooting</h2>
+            
+            <div class="faq-item">
+                <h4>Why is my player falling through the floor on room load?</h4>
+                <p>Ensure the <strong>PlayerSpawnPoint</strong> is at least 0.75 units above the floor collider.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>The Lobby environment is still visible while in a room.</h4>
+                <p>Verify your Lobby is childed to a single Root GameObject assigned to the <strong>Main Scene Root</strong>.</p>
+            </div>
+
+            <div class="faq-item">
+                <h4>Can I trigger a "Death" or "Game Over" state?</h4>
+                <p>Yes. Call <code>LoadRespawnPoint()</code> from your health or damage script to return to the lobby.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="support-footer">
+        <h2>Further Assistance</h2>
+        <p style="color: var(--secondary-text); margin-bottom: 30px;">Reach out to our technical support team.</p>
+        <a href="mailto:leighbezi3@gmail.com" class="btn">Email Support</a>
+    </section>
+
+    <footer>
+        &copy; 2026 BlindRunTools | Tools for the masses.
+    </footer>
+
+</body>
+</html>
