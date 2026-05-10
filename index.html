@@ -138,11 +138,30 @@
             font-weight: bold;
             font-size: 1.1rem;
             transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
         }
 
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 20px rgba(0, 242, 255, 0.4);
+        }
+
+        .email-fallback {
+            display: block;
+            margin-top: 14px;
+            color: var(--secondary-text);
+            font-size: 0.95rem;
+        }
+
+        .email-fallback a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .email-fallback a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -207,7 +226,7 @@
         </div>
 
         <div class="faq-section">
-            <h2 style="margin-top: 0; color: #fff; font-size: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 30px;">❓ Detailed FAQ & Troubleshooting</h2>
+            <h2 style="margin-top: 0; color: #fff; font-size: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 10px; margin-bottom: 30px;">❓ Detailed FAQ &amp; Troubleshooting</h2>
             
             <div class="faq-item">
                 <h4>Why is my player falling through the floor on room load?</h4>
@@ -249,7 +268,16 @@
     <section class="support-footer">
         <h2>Further Assistance</h2>
         <p style="color: var(--secondary-text); margin-bottom: 30px;">Reach out to our technical support team.</p>
-        <a href="mailto:lee.finelines@gmail.com" class="btn">Email Support</a>
+
+        <!-- Button uses onclick for max browser compatibility -->
+        <button class="btn" onclick="window.location.href='mailto:lee.finelines@gmail.com'">
+            📧 Email Support
+        </button>
+
+        <!-- Plain-text fallback so users can also copy the address -->
+        <span class="email-fallback">
+            or copy the address: <a href="mailto:lee.finelines@gmail.com">lee.finelines@gmail.com</a>
+        </span>
     </section>
 
     <footer>
@@ -258,3 +286,4 @@
 
 </body>
 </html>
+
